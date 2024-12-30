@@ -1,0 +1,133 @@
+<c-row ngPreserveWhitespaces>
+  <c-col xs="12">
+    <c-card class="mb-4">
+      <c-card-header>
+        <strong>List of Leaders</strong>
+      </c-card-header>
+      <c-card-body>
+        <c-container>
+          <c-row>
+            <c-col xs="12" sm="12">
+              <p class="text-body-secondary small">
+                <c-col>
+                  <button cButton color="primary" variant="outline" [routerLink]="['/people/pastors/add-pastor']">Add a leader</button>
+                </c-col>
+              </p>
+            </c-col>
+          </c-row>
+        </c-container>
+        <c-container>
+          <c-row>
+            <table
+              [hover]="true"
+              [responsive]="true"
+              [striped]="true"
+              align="middle"
+              cTable
+              class="mb-0 border"
+            >
+              <thead class="text-nowrap text-truncate">
+              <tr>
+                <th class="bg-body-tertiary">Pastor</th>
+                <th class="bg-body-tertiary">Church</th>
+                <th class="bg-body-tertiary text-center">Created At</th>
+                <th class="bg-body-tertiary">Actions</th>
+              </tr>
+              </thead>
+              <tbody>
+                @for (user of users; track user.name; let i = $index) {
+                  <tr>
+                    <td>
+                      <div>{{ user.name }}</div>
+                      <div class="small text-body-secondary text-nowrap">
+                      <span>
+                        {{ user.state }} | Registered: {{ user.registered }}
+                      </span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="d-flex justify-content-between">
+                        <div class="float-start">
+                          <strong>{{ user.church }}</strong>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="text-left">
+                      <div class="float-end ms-1 text-nowrap">
+                        <small class="text-body-secondary">
+                          {{ user.registered }}
+                        </small>
+                      </div>
+                    </td>
+                    <td class="text-right"> 
+                      <mat-button-toggle-group name="fontStyle" aria-label="Font Style" [hideSingleSelectionIndicator]="true">
+                        <button cButton cOffcanvasToggle="OffcanvasEnd" variant="outline">Edit</button>
+                        <button cButton variant="outline" (click)="toggleLiveDemo()">Delete</button>
+                        <button cButton cOffcanvasToggle="OffcanvasEnd" variant="outline">View</button>
+                      </mat-button-toggle-group>
+                    </td>
+                  </tr>
+                }
+              </tbody>
+              <!-- <c-container>
+                <c-row>
+                  <c-pagination aria-label="Page navigation example" align="end">
+                    <li cPageItem [disabled]="true">
+                      <span cPageLink [routerLink]>Previous</span>
+                    </li>
+                    <li cPageItem>
+                      <a cPageLink [routerLink]>1</a>
+                    </li>
+                    <li cPageItem [active]="true">
+                      <span cPageLink [routerLink]>2</span>
+                    </li>
+                    <li cPageItem>
+                      <a cPageLink [routerLink]>3</a>
+                    </li>
+                    <li cPageItem>
+                      <a cPageLink [routerLink]>Next</a>
+                    </li>
+                  </c-pagination>
+                </c-row>
+              </c-container> -->
+            </table>
+          </c-row>
+        </c-container>
+      </c-card-body>
+    </c-card>
+  </c-col>
+</c-row>
+
+<c-offcanvas
+  placement="end"
+  id="OffcanvasEnd"
+>
+  <c-offcanvas-header>
+    <h5 cOffcanvasTitle>Offcanvas Header</h5>
+    <button
+      cButtonClose
+      class="text-reset ms-auto"
+      cOffcanvasToggle="OffcanvasEnd"
+      aria-label="Close"
+    ></button>
+  </c-offcanvas-header>
+  <c-offcanvas-body>
+    <p>
+      Content for the offcanvas goes here. You can place just about any CoreUI component or custom elements here.
+    </p>
+  </c-offcanvas-body>
+</c-offcanvas>
+
+<c-modal id="liveDemoModal" [visible]="visible" (visibleChange)="handleLiveDemoChange($event)">
+  <c-modal-header>
+    <h5 cModalTitle>Delete Registered Pastor</h5>
+    <button (click)="toggleLiveDemo()" cButtonClose></button>
+  </c-modal-header>
+  <c-modal-body>Are you sure you want to delete this Pastor?</c-modal-body>
+  <c-modal-footer>
+    <button (click)="toggleLiveDemo()" cButton color="secondary">
+      Close
+    </button>
+    <button cButton color="primary">Delete</button>
+  </c-modal-footer>
+</c-modal>
