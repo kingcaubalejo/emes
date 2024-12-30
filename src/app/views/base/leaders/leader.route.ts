@@ -13,14 +13,14 @@ export const routes: Routes = [
         redirectTo: 'list-leaders',
         pathMatch: 'full'
       },
-        // {
-        //     path: 'add-pastor',
-        //     loadComponent: () => import('./add-pastor/add-pastor.component').then(m => m.AddPastorComponent),
-        //     data: {
-        //         title: 'Add Pastor'
-        //     }
-        // },
-        {
+      {
+          path: 'add-leaders',
+          loadComponent: () => import('./add-leaders/add-leaders.component').then(m => m.AddLeadersComponent),
+          data: {
+              title: 'Add Leaders'
+          }
+      },
+      {
         path: 'list-leaders',
         loadComponent: () => import('./list-leaders/list-leaders.component').then(m => m.ListLeadersComponent),
         data: {
