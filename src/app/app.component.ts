@@ -14,7 +14,7 @@ import { iconSubset } from './icons/icon-subset';
     imports: [RouterOutlet]
 })
 export class AppComponent implements OnInit {
-  title = 'CoreUI Angular Admin Template';
+  title = 'Event Management Engine System | v1.0.0';
 
   readonly #destroyRef: DestroyRef = inject(DestroyRef);
   readonly #activatedRoute: ActivatedRoute = inject(ActivatedRoute);

@@ -43,7 +43,7 @@ Before running the application, ensure the following tools are installed:
 
 4. Run the development server:
    ```bash
-   ng serve
+   npm run start:dev
    ```
    Open your browser and navigate to `http://localhost:4200`.
 
