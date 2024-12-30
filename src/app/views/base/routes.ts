@@ -18,10 +18,7 @@ export const routes: Routes = [
       },
       {
         path: 'leaders',
-        loadComponent: () => import('./leaders/leaders.component').then(m => m.LeadersComponent),
-        data: {
-          title: 'Leaders'
-        }
+        loadChildren: () => import('./leaders/leader.route').then(m => m.routes),
       },
       {
         path: 'campers',
