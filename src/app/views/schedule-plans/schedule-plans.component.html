@@ -1,0 +1,15 @@
+<c-card>
+  <c-card-header>
+    {{ title }}
+  </c-card-header>
+  <c-card-body>
+    <c-row class="text-center">
+      <full-calendar [options]="calendarOptions">
+        <ng-template #eventContent let-arg>
+          <b>{{arg.timeText}}</b>
+          <i>{{arg.event.title}}</i>
+        </ng-template>
+      </full-calendar>
+    </c-row>
+  </c-card-body>
+</c-card>
