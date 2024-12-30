@@ -22,8 +22,9 @@ Before running the application, ensure the following tools are installed:
 - **Angular CLI**: v19
 - **npm**: v7 or later
 - A modern web browser (e.g., Chrome, Firefox)
+- Docker: v20 or later (for running with Docker)
 
-## Installation
+## Installation (Local Development)
 
 1. Clone the repository:
    ```bash
@@ -45,6 +46,18 @@ Before running the application, ensure the following tools are installed:
    ng serve
    ```
    Open your browser and navigate to `http://localhost:4200`.
+
+## Running the App with Docker
+
+1. Build the Docker image:
+   ```bash
+   docker build -t emes .
+   ```
+
+2. Run the Docker container:
+   ```bash
+   docker run -p 80:80 emes
+   ```
 
 ## Project Structure
 ```plaintext
