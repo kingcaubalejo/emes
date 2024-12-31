@@ -1,24 +1,24 @@
 import { Routes } from "@angular/router";
 
 export const routes: Routes = [
-  { 
+  {
     path: '',
     loadComponent: () => import('./leaders.component').then(m => m.LeadersComponent),
     data: {
-        title: 'Leaders'
+      title: 'Leaders'
     },
-    children:[
-              {
+    children: [
+      {
         path: '',
         redirectTo: 'list-leaders',
         pathMatch: 'full'
       },
       {
-          path: 'add-leaders',
-          loadComponent: () => import('./add-leaders/add-leaders.component').then(m => m.AddLeadersComponent),
-          data: {
-              title: 'Add Leaders'
-          }
+        path: 'add-leaders',
+        loadComponent: () => import('./add-leaders/add-leaders.component').then(m => m.AddLeadersComponent),
+        data: {
+          title: 'Add Leaders'
+        }
       },
       {
         path: 'list-leaders',
@@ -31,5 +31,3 @@ export const routes: Routes = [
   },
 
 ];
-
-

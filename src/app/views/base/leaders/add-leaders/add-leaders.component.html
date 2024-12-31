@@ -1,1 +1,31 @@
-<p>add-leaders works!</p>
+<c-row ngPreserveWhitespaces>
+    <c-col xs="12">
+        <c-card class="mb-4">
+            <c-card-header>
+                <strong>Add a Leader</strong>
+            </c-card-header>
+            <c-card-body>
+                <form cForm class="row g-3">
+                    <c-col [md]="6">
+                        <label cLabel for="inputEmail4">Firstname</label>
+                        <input cFormControl id="inputEmail4" type="email" />
+                    </c-col>
+                    <c-col [md]="6">
+                        <label cLabel for="inputPassword4">Lastname</label>
+                        <input cFormControl id="inputPassword4" type="password" />
+                    </c-col>
+                    <c-col [md]="12">
+                        <label cLabel for="inputState">Church</label>
+                        <select cSelect id="inputState">
+                            <option>Choose...</option>
+                            <option>...</option>
+                        </select>
+                    </c-col>
+                    <c-col [xs]="12">
+                        <button cButton type="submit">Submit</button>
+                    </c-col>
+                </form>
+            </c-card-body>
+        </c-card>
+    </c-col>
+</c-row>
