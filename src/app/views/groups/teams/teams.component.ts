@@ -1,38 +1,64 @@
 import { Component } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, ReactiveFormsModule } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { DomSanitizer } from '@angular/platform-browser';
+import { RowComponent, ColComponent, TextColorDirective, CardComponent, CardHeaderComponent, CardBodyComponent, AccordionComponent, AccordionItemComponent, TemplateIdDirective, AccordionButtonDirective, BgColorDirective } from '@coreui/angular';
 import { DocsExampleComponent } from '@docs-components/public-api';
-import { RowComponent, ColComponent, TextColorDirective, CardComponent, CardHeaderComponent, CardBodyComponent, ButtonGroupComponent, ButtonDirective, FormCheckLabelDirective, ButtonToolbarComponent, InputGroupComponent, InputGroupTextDirective, FormControlDirective, ThemeDirective, DropdownComponent, DropdownToggleDirective, DropdownMenuDirective, DropdownItemDirective, DropdownDividerDirective } from '@coreui/angular';
 
 @Component({
     selector: 'app-teams',
     templateUrl: './teams.component.html',
     styleUrls: ['./teams.component.scss'],
-    imports: [RowComponent, ColComponent, TextColorDirective, CardComponent, CardHeaderComponent, CardBodyComponent, DocsExampleComponent, ButtonGroupComponent, ButtonDirective, RouterLink, ReactiveFormsModule, FormCheckLabelDirective, ButtonToolbarComponent, InputGroupComponent, InputGroupTextDirective, FormControlDirective, ThemeDirective, DropdownComponent, DropdownToggleDirective, DropdownMenuDirective, DropdownItemDirective, DropdownDividerDirective]
+    imports: [RowComponent, ColComponent, TextColorDirective, CardComponent, CardHeaderComponent, CardBodyComponent, DocsExampleComponent, AccordionComponent, AccordionItemComponent, TemplateIdDirective, AccordionButtonDirective, BgColorDirective]
 })
 export class TeamsComponent {
 
-  formCheck1 = this.formBuilder.group({
-    checkbox1: false,
-    checkbox2: false,
-    checkbox3: false
-  });
-  formRadio1 = new UntypedFormGroup({
-    radio1: new UntypedFormControl('Radio1')
-  });
+  teams: Array<{group: number, group_name: string}> = [];
 
   constructor(
-    private formBuilder: UntypedFormBuilder
-  ) { }
+    private sanitizer: DomSanitizer
+  ) { 
+    this.teams = [
+      {
+        group: 1, group_name: 'GroupA'
+      },{
+        group: 2, group_name: 'GroupB'
+      },{
+        group: 3, group_name: 'GroupC'
+      },{
+        group: 4, group_name: 'GroupD'
+      },{
+        group: 5, group_name: 'GroupD'
+      },{
+        group: 6, group_name: 'GroupE'
+      },{
+        group: 7, group_name: 'GroupF'
+      },{
+        group: 8, group_name: 'GroupG'
+      },{
+        group: 9, group_name: 'GroupH'
+      },{
+        group: 10, group_name: 'GroupI'
+      },{
+        group: 11, group_name: 'GroupJ'
+      },{
+        group: 12, group_name: 'GroupK'
+      },{
+        group: 13, group_name: 'GroupL'
+      }
+    ]
 
-  setCheckBoxValue(controlName: string) {
-    const prevValue = this.formCheck1.get(controlName)?.value;
-    const value = this.formCheck1.value;
-    value[controlName] = !prevValue;
-    this.formCheck1.setValue(value);
+    console.log(typeof this.teams)
   }
 
-  setRadioValue(value: string): void {
-    this.formRadio1.setValue({ radio1: value });
+  getAccordionBodyText(value: string|number) {
+    const textSample = `
+      <strong>This is the <mark>#${value}</mark> item accordion body.</strong> It is hidden by
+      default, until the collapse plugin adds the appropriate classes that we use to
+      style each element. These classes control the overall appearance, as well as
+      the showing and hiding via CSS transitions. You can modify any of this with
+      custom CSS or overriding our default variables. It&#39;s also worth noting
+      that just about any HTML can go within the <code>.accordion-body</code>,
+      though the transition does limit overflow.
+    `;
+    return this.sanitizer.bypassSecurityTrustHtml(textSample);
   }
 }
