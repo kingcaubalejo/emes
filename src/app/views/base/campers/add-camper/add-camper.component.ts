@@ -12,9 +12,8 @@ import {
   ButtonDirective 
 } from '@coreui/angular';
 
-
 @Component({
-  selector: 'app-add-leaders',
+  selector: 'app-add-camper',
   imports: [
     ContainerComponent,
     RowComponent,
@@ -27,9 +26,9 @@ import {
     FormSelectDirective,
     ButtonDirective 
   ],
-  templateUrl: './add-leaders.component.html',
-  styleUrl: './add-leaders.component.scss'
+  templateUrl: './add-camper.component.html',
+  styleUrl: './add-camper.component.scss'
 })
-export class AddLeadersComponent {
+export class AddCamperComponent {
 
 }
