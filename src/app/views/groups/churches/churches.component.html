@@ -1,10 +1,10 @@
 @for (church of churches; track church.row; let i = $index) {
   <c-row ngPreserveWhitespaces>
-    @for (content of church.content; track content; let j = $index) {
+    @for (c of church.content; track c.church; let j = $index) {
       <c-col xs="3">
         <c-card class="mb-2" id="AngularButton">
           <c-card-header>
-            <strong>Churches {{ content }}</strong>
+            <strong>{{ c.church_name }}</strong>
           </c-card-header>
           <c-card-body>
             <p class="text-body-secondary small">

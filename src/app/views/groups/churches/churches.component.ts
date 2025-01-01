@@ -19,7 +19,7 @@ import {
 })
 export class ChurchesComponent {
 
-  churches: Array<{row: number , content: Object[] }> = [];
+  churches: Array<{row: number , content: Array<{church: number, church_name: string, church_members: number}> }> = [];
 
   constructor() {
     this.churches = [
